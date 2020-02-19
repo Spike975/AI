@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8090312017146154309}
   - component: {fileID: 1871176903318230279}
   - component: {fileID: 2028641570285228826}
+  - component: {fileID: 7952690262955485994}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Floor
@@ -337,8 +338,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56e4b5eba7b5744da045af09419bf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
   around:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &7952690262955485994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090312017146154308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a7cb89cf02bef4bb0ddecb5a5a3939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 3797456462662588850, guid: 0e8aa5a6933a714489e7891fa9ce7a2a, type: 3}
+  end: {fileID: 5387027026137150987, guid: a3b94b24e83a561408f5c514d5bf577e, type: 3}

@@ -150,9 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4542da4038c2e4f40b3f89a928265bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 10
-  y: 10
-  start: {x: -5, y: 1, z: -5}
+  x: 5
+  y: 5
+  spawnStart: {x: 1, y: 0, z: 2}
+  endStart: {x: 2, y: 0, z: 3}
   target: {fileID: 8090312017146154308, guid: 502eae420f03aea49b23d8898a1fb6ff, type: 3}
   spawn: {fileID: 3797456462662588850, guid: 0e8aa5a6933a714489e7891fa9ce7a2a, type: 3}
   end: {fileID: 5387027026137150987, guid: a3b94b24e83a561408f5c514d5bf577e, type: 3}
@@ -222,7 +223,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -265,9 +266,10 @@ GameObject:
   - component: {fileID: 1817829888}
   - component: {fileID: 1817829887}
   - component: {fileID: 1817829886}
+  - component: {fileID: 1817829890}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +349,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1817829890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817829885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465374fcca78571488e7394694ba9672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: []
 --- !u!1 &1957867309
 GameObject:
   m_ObjectHideFlags: 0

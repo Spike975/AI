@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\TowerDefense\AStar.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\BlockBuilder.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\Dijkstra.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\FloorToSpawnOrEnd.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\FloorToWall.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\NodeScript.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\SpawnBlock.cs" />

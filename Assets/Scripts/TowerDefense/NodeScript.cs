@@ -4,16 +4,12 @@ public class NodeScript : MonoBehaviour
 {
     public int weight = 1;
     public GameObject[] around = new GameObject[4];
-    private GameObject[] all = new GameObject[0];
+    public GameObject[] all = new GameObject[0];
 
     // Update is called once per frame
     void Update()
     {
-
-        if(all.Length != GameObject.FindGameObjectsWithTag("Floor").Length)
-        {
-            all = GameObject.FindGameObjectsWithTag("Floor");
-        }
+        all = GameObject.FindGameObjectsWithTag("Floor");
         for (int i = 0; i < all.Length; i++)
         {
             if (all[i].transform.position.x - 1 == transform.position.x && all[i].transform.position.z == transform.position.z)

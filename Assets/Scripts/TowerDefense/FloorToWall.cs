@@ -15,7 +15,8 @@ public class FloorToWall : MonoBehaviour
             {
                 if (hit.transform.gameObject == gameObject)
                 {
-                    Instantiate(other, gameObject.transform.position, Quaternion.LookRotation(new Vector3()));
+                    GameObject spawns = Instantiate(other, gameObject.transform.position, Quaternion.LookRotation(new Vector3()));
+                    spawns.name = other.name;
                     Destroy(gameObject);
                 }
             }
