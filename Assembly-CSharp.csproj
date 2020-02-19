@@ -70,6 +70,12 @@
     <Compile Include="Assets\Scripts\Flocking.cs" />
     <Compile Include="Assets\Scripts\Pursue.cs" />
     <Compile Include="Assets\Scripts\Seek.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\AStar.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\BlockBuilder.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\Dijkstra.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\FloorToWall.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\NodeScript.cs" />
+    <Compile Include="Assets\Scripts\TowerDefense\SpawnBlock.cs" />
     <Compile Include="Assets\Scripts\WalkingNavMesh.cs" />
     <Compile Include="Assets\Scripts\Wander.cs" />
     <Reference Include="Unity.Timeline.Editor">
@@ -77,6 +83,15 @@
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -93,23 +108,14 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder">
-      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>C:/Users/s199026/Unity/AI/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity 2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
