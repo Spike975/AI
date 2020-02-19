@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Evade.cs" />
     <Compile Include="Assets\Scripts\Flee.cs" />
     <Compile Include="Assets\Scripts\Flocking.cs" />
+    <Compile Include="Assets\Scripts\PersonalWalkingNavMesh.cs" />
     <Compile Include="Assets\Scripts\Pursue.cs" />
     <Compile Include="Assets\Scripts\Seek.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\AStar.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Assets\Scripts\TowerDefense\FloorToSpawnOrEnd.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\FloorToWall.cs" />
     <Compile Include="Assets\Scripts\TowerDefense\NodeScript.cs" />
-    <Compile Include="Assets\Scripts\TowerDefense\SpawnBlock.cs" />
     <Compile Include="Assets\Scripts\WalkingNavMesh.cs" />
     <Compile Include="Assets\Scripts\Wander.cs" />
     <Reference Include="Unity.Timeline.Editor">

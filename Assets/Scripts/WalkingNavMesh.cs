@@ -10,7 +10,7 @@ public class WalkingNavMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        set = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -26,5 +26,9 @@ public class WalkingNavMesh : MonoBehaviour
             }
         }
         nav.SetDestination(set);
+        if (nav.autoTraverseOffMeshLink)
+        {
+            nav.CompleteOffMeshLink();
+        }
     }
 }
