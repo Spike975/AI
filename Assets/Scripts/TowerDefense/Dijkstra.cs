@@ -232,7 +232,7 @@ public class Dijkstra : MonoBehaviour
             }
             if (place != 0)
             {
-                for (int i = 1; i < length; i++)
+                for (int i = 1; i < close.Length; i++)
                 {
                     GameObject[] tempArr = new GameObject[i+1];
                     for (int x = 0; x < path.Length; x++)
