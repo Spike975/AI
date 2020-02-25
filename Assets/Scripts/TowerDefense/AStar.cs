@@ -283,7 +283,7 @@ public class AStar : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.HSVToRGB(30f / 360f, 1, 1);
+        Gizmos.color = Color.HSVToRGB(1f / 12f, 1, 1);
         if (path != null)
         {
             for (int i = 0; i < path.Length; i++)

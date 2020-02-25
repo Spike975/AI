@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4542da4038c2e4f40b3f89a928265bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 5
-  y: 5
+  x: 19
+  y: 19
   spawnStart: {x: 0, y: 0, z: 0}
   endStart: {x: 4, y: 0, z: 4}
   target: {fileID: 8090312017146154308, guid: 502eae420f03aea49b23d8898a1fb6ff, type: 3}
