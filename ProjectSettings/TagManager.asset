@@ -9,6 +9,9 @@ TagManager:
   - Floor
   - Wall
   - Spawn
+  - Path
+  - Enemy
+  - Guard
   layers:
   - Default
   - TransparentFX

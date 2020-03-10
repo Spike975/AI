@@ -64,6 +64,16 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIScript.cs" />
     <Compile Include="Assets\Scripts\Arrive.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Guard.cs" />
+    <Compile Include="Assets\Scripts\Assessment\GuardPost.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Mine.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Movement.cs" />
+    <Compile Include="Assets\Scripts\Assessment\ShowStorage.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Status.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Storage.cs" />
+    <Compile Include="Assets\Scripts\Assessment\Town.cs" />
+    <Compile Include="Assets\Scripts\Assessment\TownsFolk.cs" />
     <Compile Include="Assets\Scripts\Avoid.cs" />
     <Compile Include="Assets\Scripts\Evade.cs" />
     <Compile Include="Assets\Scripts\Flee.cs" />
