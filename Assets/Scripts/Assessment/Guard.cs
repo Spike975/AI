@@ -5,7 +5,7 @@ public class Guard : MonoBehaviour
 {
     public GameObject[] path;
     public List<GameObject> enemies;
-    public float attack;
+    public int attack;
     private float attacked;
     public float attackSpeed;
     private GameObject target;
@@ -16,17 +16,47 @@ public class Guard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        path = GameObject.FindGameObjectsWithTag("Path");
+        for(int i = 0; i < path.Length; i++)
+        {
+            for (int x = i; x < path.Length; x++)
+            {
+                if (path[x].name == "Path " + i)
+                {
+                    GameObject temp = path[x];
+                    path[x] = path[i];
+                    path[i] = temp;
+                    break;
+                }
+            }
+        }
+        int start = 0;
+        for (int i = 1; i < path.Length; i++)
+        {
+            if ((path[i].transform.position - transform.position).sqrMagnitude < (path[start].transform.position - transform.position).sqrMagnitude)
+            {
+                start = i;
+            }
+        }
+        cur = start;
         enemies = new List<GameObject>();
         target = null;
-        cur = 0;
         current = path[cur];
         next = path[cur+1];
-        last = path[path.Length-1];
+        last = path[(cur-1) > 0 ? cur-1 : path.Length-1];
     }
 
     // Update is called once per frame
     void Update()
     {
+        for (int i = enemies.Count - 1; i > -1; i--)
+        {
+            if(enemies[i] == null)
+            {
+                enemies.RemoveAt(i);
+            }
+        }
         if (enemies.Count != 0)
         {
             if (target == null)
@@ -87,14 +117,16 @@ public class Guard : MonoBehaviour
             }
         }
     }
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            enemies.Add(other.gameObject);
+            if (!enemies.Contains(other.gameObject))
+            {
+                enemies.Add(other.gameObject);
+            }
         }
     }
-
     public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Enemy")

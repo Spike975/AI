@@ -7,6 +7,6 @@ public class ShowStorage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Text>().text = storage.GetComponent<Storage>().mine.ToString();
+        gameObject.GetComponent<Text>().text = "Mine: " + storage.GetComponent<Storage>().mine.ToString() + "\nLumber: " + storage.GetComponent<Storage>().building + "\nFood: " + storage.GetComponent<Storage>().food + "\nCoins: " + storage.GetComponent<Storage>().coin;
     }
 }

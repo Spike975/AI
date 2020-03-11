@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9284b57c37bc7e143ac808d18d8717db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
-  hunger: 100
+  health: 50
+  hunger: 75
   money: 0
   hungerDrain: 0
 --- !u!135 &1157562536351045944

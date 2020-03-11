@@ -5,22 +5,26 @@ public class Enemy : MonoBehaviour
 {
     public List<GameObject> targets;
     public GameObject target;
-    public GameObject town;
-    public float attack;
+    private GameObject town;
+    public int attack;
     public float attackSpeed;
     private float attacked = 0;
     // Start is called before the first frame update
     void Start()
     {
-
+        town = GameObject.Find("Town");
+        //Need avalibility for mulitple to proceed at once
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (targets.Contains(null))
+        for (int i = targets.Count - 1; i > -1; i--)
         {
-            targets.Clear();
+            if (targets[i] == null)
+            {
+                targets.RemoveAt(i);
+            }
         }
         if (targets.Count == 0)
         {
@@ -100,7 +104,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "Guard")
         {
             if (!targets.Contains(other.gameObject))
             {
@@ -110,7 +114,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "Guard")
         {
             targets.Remove(other.gameObject);
         }

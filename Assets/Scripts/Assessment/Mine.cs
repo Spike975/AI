@@ -4,51 +4,81 @@ public class Mine : MonoBehaviour
 {
     private GameObject mine;
     private GameObject storage;
-    public float capacity;
-    public float refill;
-    public float lastTime;
+    public int mined;
+    private float lastTime;
+    private bool filled = false;
 
     // Start is called before the first frame update
     void Start()
     {
         mine = GameObject.Find("Mine");
         storage = GameObject.Find("Storage");
-        capacity = 0;
+        mined = 0;
         lastTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (capacity >= 50)
+        if (storage.GetComponent<Storage>().mine < storage.GetComponent<Storage>().mineCap)
         {
-            gameObject.GetComponent<Movement>().speed = .5f;
-            if ((storage.transform.position - transform.position).sqrMagnitude >= 1)
+            if (filled)
             {
-                gameObject.GetComponent<Movement>().velocity += ((storage.transform.position - transform.position).normalized - gameObject.GetComponent<Movement>().velocity) * Time.deltaTime;
-            }
-            else
-            {
-                storage.GetComponent<Storage>().mine += capacity;
-                gameObject.GetComponent<Status>().money += 3;
-                capacity = 0;
-            }
-        }
-        else
-        {
-            gameObject.GetComponent<Movement>().speed = 1;
-            if ((mine.transform.position -gameObject.transform.position).sqrMagnitude <= 1) {
-                if ((Time.time - lastTime) >= refill)
+                if ((storage.transform.position - transform.position).sqrMagnitude >= .5f)
                 {
-                    lastTime = Time.time;
-                    capacity++;
-                    gameObject.GetComponent<Movement>().velocity = new Vector3();
+                    Vector3 v = ((storage.transform.position - transform.position).normalized - gameObject.GetComponent<Movement>().velocity);
+                    v.y = 0;
+                    gameObject.GetComponent<Movement>().velocity += v * Time.deltaTime;
+                }
+                else
+                {
+                    if (mined != 0)
+                    {
+                        if ((Time.time - lastTime) >= gameObject.GetComponent<TownsFolk>().gatherTime)
+                        {
+                            storage.GetComponent<Storage>().mine ++;
+                            mined--;
+                        }
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<Status>().money += 3;
+                        filled = false;
+                        gameObject.GetComponent<Movement>().speed = 1;
+                        gameObject.GetComponent<Movement>().velocity = new Vector3();
+                        gameObject.GetComponent<TownsFolk>().current = gameObject.GetComponent<TownsFolk>().last;
+                        gameObject.GetComponent<TownsFolk>().last = 0;
+                        gameObject.GetComponent<Mine>().enabled = false;
+                    }
                 }
             }
             else
             {
-                gameObject.GetComponent<Movement>().velocity += ((mine.transform.position - transform.position).normalized - gameObject.GetComponent<Movement>().velocity) * Time.deltaTime;
+                if ((mine.transform.position - gameObject.transform.position).sqrMagnitude <= 1) {
+                    if ((Time.time - lastTime) >= gameObject.GetComponent<TownsFolk>().gatherTime)
+                    {
+                        lastTime = Time.time;
+                        mined++;
+                        if (mined == gameObject.GetComponent<TownsFolk>().capacity)
+                        {
+                            filled = true;
+                        }
+                        gameObject.GetComponent<Movement>().velocity = new Vector3();
+                        gameObject.GetComponent<Movement>().speed = .5f;
+                    }
+                }
+                else
+                {
+                    gameObject.GetComponent<Movement>().velocity += ((mine.transform.position - transform.position).normalized - gameObject.GetComponent<Movement>().velocity) * Time.deltaTime;
+                }
             }
+        }
+        else
+        {
+            gameObject.GetComponent<Movement>().velocity = new Vector3();
+            gameObject.GetComponent<TownsFolk>().current = gameObject.GetComponent<TownsFolk>().last;
+            gameObject.GetComponent<TownsFolk>().last = 0;
+            gameObject.GetComponent<Mine>().enabled = false;
         }
     }
 }

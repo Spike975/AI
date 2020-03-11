@@ -16,6 +16,12 @@ GameObject:
   - component: {fileID: 4863696443196651678}
   - component: {fileID: 4863696443196651679}
   - component: {fileID: 4863696443196651676}
+  - component: {fileID: 5774095588064722464}
+  - component: {fileID: 4850526683755146812}
+  - component: {fileID: 6881431824633356947}
+  - component: {fileID: 4088934710298089380}
+  - component: {fileID: 3222596732576706399}
+  - component: {fileID: 657003554910637652}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Player
@@ -110,9 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b57c669d1f705b47bfca7ac6ae4cc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capacity: 0
+  mined: 0
   refill: 0.1
-  lastTime: 0
 --- !u!114 &4863696443196651678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +167,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  hunger: 100
+  hunger: 50
   money: 0
   hungerDrain: 0
+--- !u!114 &5774095588064722464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863696443196651652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2347817efde22a40ae2766b053ce8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capacity: 0
+  current: 0
+  last: 0
+--- !u!114 &4850526683755146812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863696443196651652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea333d0a4ec3ad4f8a9888e6b83196c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6881431824633356947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863696443196651652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2bd39f36148954c8e3fb12ffebbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4088934710298089380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863696443196651652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad055129509de3a4cb465b28c343b544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3222596732576706399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863696443196651652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d00f1a4fcfc60f4cbb30c659cd272ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &657003554910637652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863696443196651652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e9a7c35131cb24f80ab977528403f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mine: 0
