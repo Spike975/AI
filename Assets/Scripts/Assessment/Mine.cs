@@ -32,23 +32,22 @@ public class Mine : MonoBehaviour
                 }
                 else
                 {
-                    if (mined != 0)
+
+                    if ((Time.time - lastTime) >= gameObject.GetComponent<TownsFolk>().gatherTime)
                     {
-                        if ((Time.time - lastTime) >= gameObject.GetComponent<TownsFolk>().gatherTime)
+                        lastTime = Time.time;
+                        storage.GetComponent<Storage>().mine++;
+                        mined--;
+                        if (mined == 0)
                         {
-                            storage.GetComponent<Storage>().mine ++;
-                            mined--;
+                            gameObject.GetComponent<Status>().money += 3;
+                            filled = false;
+                            gameObject.GetComponent<Movement>().speed = 1;
+                            gameObject.GetComponent<Movement>().velocity = new Vector3();
+                            gameObject.GetComponent<TownsFolk>().current = gameObject.GetComponent<TownsFolk>().last;
+                            gameObject.GetComponent<TownsFolk>().last = 0;
+                            gameObject.GetComponent<Mine>().enabled = false;
                         }
-                    }
-                    else
-                    {
-                        gameObject.GetComponent<Status>().money += 3;
-                        filled = false;
-                        gameObject.GetComponent<Movement>().speed = 1;
-                        gameObject.GetComponent<Movement>().velocity = new Vector3();
-                        gameObject.GetComponent<TownsFolk>().current = gameObject.GetComponent<TownsFolk>().last;
-                        gameObject.GetComponent<TownsFolk>().last = 0;
-                        gameObject.GetComponent<Mine>().enabled = false;
                     }
                 }
             }

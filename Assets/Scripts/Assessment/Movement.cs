@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Moves the object based on the given velocity, and it points in that given direction
     void Update()
     {
         transform.position += velocity * speed * Time.deltaTime;

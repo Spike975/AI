@@ -35,12 +35,17 @@ public class TownsFolk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks to see if it is doing anything
         if (current == 0)
         {
+            //Checks to see if there was a last function
             if (last == 0)
             {
-                int check = 0;
+                //This checks to see if townspeople should do anything
 
+
+                int check = 0;
+                //Checks to see if the Town is damaged, then checks to see how many other players have already are doing that task
                 if (townHouse.GetComponent<Town>().health < 200)
                 {
                     
@@ -53,7 +58,7 @@ public class TownsFolk : MonoBehaviour
                             confirm++;
                         }
                     }
-                    if (confirm < 5)
+                    if (confirm < 2)
                     {
                         current = 4;
                     }
@@ -62,6 +67,7 @@ public class TownsFolk : MonoBehaviour
                         check++;
                     }
                 }
+                //Checks to see if guards need to be hired, then checks to see how many other players have already are doing that task
                 if (guardHouse.GetComponent<GuardPost>().guardDeath > 0 && current == 0)
                 {
                     GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
@@ -82,6 +88,7 @@ public class TownsFolk : MonoBehaviour
                         check++;
                     }
                 }
+                //Checks to see if the storage limit for the mine has been reached, then checks to see how many other players have already are doing that task
                 if (storage.GetComponent<Storage>().mine < storage.GetComponent<Storage>().mineCap && current == 0)
                 {
                     GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
@@ -103,6 +110,7 @@ public class TownsFolk : MonoBehaviour
                     }
 
                 }
+                //Checks to see if the storage limit for food has been reached, then checks to see how many other players have already are doing that task
                 if (storage.GetComponent<Storage>().food < storage.GetComponent<Storage>().foodCap && current == 0)
                 {
                     GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
@@ -123,44 +131,8 @@ public class TownsFolk : MonoBehaviour
                         check++;
                     }
                 }
-                if (storage.GetComponent<Storage>().building >= storage.GetComponent<Storage>().buildCap && current == 0)
-                {
-                    GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
-                    int confirm = 0;
-                    for (int i = 0; i < g.Length; i++)
-                    {
-                        if (g[i].GetComponent<Trees>().isActiveAndEnabled)
-                        {
-                            confirm++;
-                        }
-                    }
-                    if (confirm < 5)
-                    {
-                        current = 5;
-                    }
-                    else
-                    {
-                        check++;
-                    }
-                }
-
-                if (check > 4)
-                {
-                    if ((home.transform.position - transform.position).sqrMagnitude >= .5f)
-                    {
-                        Vector3 v = (home.transform.position - transform.position).normalized - gameObject.GetComponent<Movement>().velocity;
-                        v.y = 0;
-                        gameObject.GetComponent<Movement>().velocity += v * Time.time;
-                    }
-                    else
-                    {
-                        gameObject.GetComponent<Movement>().velocity = new Vector3();
-                    }
-                }
-            }
-            else if (last == 1)
-            {
-                if (storage.GetComponent<Storage>().mine >= capacity * 3 && current == 0)
+                //Checks to see if the player can get a full capacity, then checks to see if there are too many players doing this task
+                if (storage.GetComponent<Storage>().mine  >= capacity && current == 0)
                 {
                     GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
                     int confirm = 0;
@@ -176,6 +148,80 @@ public class TownsFolk : MonoBehaviour
                         current = 6;
                     }
                 }
+                //Checks to see if the storage limit for building materials has been reached, then checks to see how many other players have already are doing that task
+                if (storage.GetComponent<Storage>().building >= storage.GetComponent<Storage>().buildCap && current == 0)
+                {
+                    GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
+                    int confirm = 0;
+                    for (int i = 0; i < g.Length; i++)
+                    {
+                        if (g[i].GetComponent<Trees>().isActiveAndEnabled)
+                        {
+                            confirm++;
+                        }
+                    }
+                    if (confirm < 2)
+                    {
+                        current = 5;
+                    }
+                    else
+                    {
+                        check++;
+                    }
+                }
+                //if it went trough everything and didn't assign anything, it moves to the 'Home' object and waits
+                if (check == 5)
+                {
+                    if ((home.transform.position - transform.position).sqrMagnitude >= .25f)
+                    {
+                        Vector3 v = (home.transform.position - transform.position).normalized - gameObject.GetComponent<Movement>().velocity;
+                        v.y = 0;
+                        gameObject.GetComponent<Movement>().velocity += v * Time.time;
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<Movement>().velocity = new Vector3();
+                    }
+                }
+            }
+            //Since the player needs to make money, they prioritize the highest paying job first
+            else if (last == 1)
+            {
+                //Checks to see if the storage limit for building materials has been reached, then checks to see how many other players have already are doing that task
+                if (storage.GetComponent<Storage>().mine >= capacity && current == 0)
+                {
+                    GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
+                    int confirm = 0;
+                    for (int i = 0; i < g.Length; i++)
+                    {
+                        if (g[i].GetComponent<Sell>().isActiveAndEnabled)
+                        {
+                            confirm++;
+                        }
+                    }
+                    if (confirm < 3)
+                    {
+                        current = 6;
+                    }
+                }
+                //Checks to see if the storage limit for building materials has been reached, then checks to see how many other players have already are doing that task
+                if (storage.GetComponent<Storage>().building >= storage.GetComponent<Storage>().buildCap && current == 0)
+                {
+                    GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
+                    int confirm = 0;
+                    for (int i = 0; i < g.Length; i++)
+                    {
+                        if (g[i].GetComponent<Trees>().isActiveAndEnabled)
+                        {
+                            confirm++;
+                        }
+                    }
+                    if (confirm < 2)
+                    {
+                        current = 5;
+                    }
+                }
+                //Checks to see if the storage limit for the mine has been reached, then checks to see how many other players have already are doing that task
                 if (storage.GetComponent<Storage>().mine < storage.GetComponent<Storage>().mineCap && current == 0)
                 {
                     GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
@@ -193,7 +239,29 @@ public class TownsFolk : MonoBehaviour
                     }
                 }
             }
+            //Checks to see if there are too many players doing this task
+            else if (last == 4)
+            {
+                GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
+                int confirm = 0;
+                for(int i = 0; i < g.Length; i++)
+                {
+                    if (g[i].GetComponent<Trees>().isActiveAndEnabled)
+                    {
+                        confirm++;
+                    }
+                }
+                if ((confirm * capacity * 2) < (townHouse.GetComponent<Town>().maxHealth - townHouse.GetComponent<Town>().health))
+                {
+                    current = 5;
+                }
+                else
+                {
+                    last = 0;
+                }
+            }
         }
+        //Handles which script to enable
         else
         {
             if (current == 1)

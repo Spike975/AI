@@ -852,7 +852,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4824524089086017546, guid: cdde3a63756cb0643ab6458f78442524, type: 3}
   spawn: {fileID: 1844801265}
+  town: {fileID: 0}
   enemies: 0
+  extra: 0
   spawns: 0
 --- !u!1 &949195525
 GameObject:

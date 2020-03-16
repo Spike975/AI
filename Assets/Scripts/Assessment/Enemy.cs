@@ -13,12 +13,12 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         town = GameObject.Find("Town");
-        //Need avalibility for mulitple to proceed at once
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Makes sure there aren't any missing or null objects
         for (int i = targets.Count - 1; i > -1; i--)
         {
             if (targets[i] == null)
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
                 targets.RemoveAt(i);
             }
         }
+        //Checks to see if there are any objects in the list
         if (targets.Count == 0)
         {
             if ((town.transform.position - transform.position).sqrMagnitude >= .25f)
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            //if there isn't a target, choose the closest one
             if (target == null)
             {
                 GameObject[] t = targets.ToArray();
@@ -63,6 +65,7 @@ public class Enemy : MonoBehaviour
                     gameObject.GetComponent<Movement>().velocity = new Vector3();
                 }
             }
+            //Moves toawrd target, and when in range, attack
             else
             {
                 if ((target.transform.position - transform.position).sqrMagnitude < (town.transform.position - transform.position).sqrMagnitude) {
@@ -76,6 +79,7 @@ public class Enemy : MonoBehaviour
                         {
                             attacked = Time.time;
                             GameObject.Find(target.name).GetComponent<Status>().health -= attack;
+                            //If the target dies, revove target from list
                             if (GameObject.Find(target.name).GetComponent<Status>().health <= 0)
                             {
                                 targets.Remove(target);
@@ -102,6 +106,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    //Adds a player/guard if they enter the area
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Guard")
@@ -112,6 +117,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    //Removes the player/guard if it exits the area
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Guard")

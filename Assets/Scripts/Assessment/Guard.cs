@@ -50,6 +50,7 @@ public class Guard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Removes any missing or null gameobjects
         for (int i = enemies.Count - 1; i > -1; i--)
         {
             if(enemies[i] == null)
@@ -57,6 +58,7 @@ public class Guard : MonoBehaviour
                 enemies.RemoveAt(i);
             }
         }
+        //Check to see if there are any enemies close
         if (enemies.Count != 0)
         {
             if (target == null)
@@ -117,6 +119,7 @@ public class Guard : MonoBehaviour
             }
         }
     }
+    //If an enemy enters the area of the guard, add it to the list if it isn't there
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")
@@ -127,6 +130,7 @@ public class Guard : MonoBehaviour
             }
         }
     }
+    //Removes enemy if it exits the area
     public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Enemy")

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIScript.cs" />
     <Compile Include="Assets\Scripts\Arrive.cs" />
+    <Compile Include="Assets\Scripts\Assessment\BuyFood.cs" />
     <Compile Include="Assets\Scripts\Assessment\Enemy.cs" />
     <Compile Include="Assets\Scripts\Assessment\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Assessment\EnemyReturn.cs" />

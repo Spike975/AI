@@ -16,8 +16,10 @@ public class HireGuard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Makes sure there is a need for guards
         if (post.GetComponent<GuardPost>().guardDeath > 0)
         {
+            //Checks to see if the player has enough money to buy a guard
             if (gameObject.GetComponent<Status>().money >= post.GetComponent<GuardPost>().cost)
             {
                 if ((post.transform.position - transform.position).sqrMagnitude >= .5f)
@@ -39,6 +41,7 @@ public class HireGuard : MonoBehaviour
             }
             else
             {
+                //Checks to see if there is enough money to buy a guard
                 if ((storage.GetComponent<Storage>().coin + gameObject.GetComponent<Status>().money) >= post.GetComponent<GuardPost>().cost)
                 {
                     if ((storage.transform.position - transform.position).sqrMagnitude >= .5f)
@@ -54,16 +57,17 @@ public class HireGuard : MonoBehaviour
                         gameObject.GetComponent<Status>().money += take;
                     }
                 }
+                //Finds a new task to make money
                 else
                 {
-                    //Find out how to make money to hire guards
                     gameObject.GetComponent<TownsFolk>().current = 0;
                     gameObject.GetComponent<TownsFolk>().last = 1;
                     gameObject.GetComponent<HireGuard>().enabled = false;
                 }
             }
         }
-        else if (post.GetComponent<GuardPost>().guardDeath == 0)
+        //Finds a new task to complete
+        else
         {
             gameObject.GetComponent<Movement>().velocity = new Vector3();
             gameObject.GetComponent<TownsFolk>().current = gameObject.GetComponent<TownsFolk>().last;

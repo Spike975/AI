@@ -9,22 +9,20 @@ public class Status : MonoBehaviour
     private float drain;
     private float healthDrain = 0;
     private float hDrain = 2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //If health is < 0, destory object
         if (health <= 0){
+            //If the object was a guard, increase the amount of guards needed to spawn back in
             if (gameObject.tag == "Guard")
             {
                 GameObject.Find("GuardPost").GetComponent<GuardPost>().guardDeath++;
             }
             Destroy(gameObject);
         }
+        //if hunger <= 0, slowly drain the health of the object
         if (hunger <= 0)
         {
             if ((Time.time - healthDrain) > hDrain)
@@ -33,6 +31,7 @@ public class Status : MonoBehaviour
                 health--;
             }
         }
+        //Not implemented yet
         if (hunger <= 20)
         {
             if (money > 0)
@@ -44,10 +43,12 @@ public class Status : MonoBehaviour
                 //Make Money
             }
         }
+        //Not implemented yet
         if (health <= 20)
         {
             //Go rest
         }
+        //Slowly drains the objects hunger
         if ((Time.time - drain) >= hungerDrain && hungerDrain != 0)
         {
             drain = Time.time;
